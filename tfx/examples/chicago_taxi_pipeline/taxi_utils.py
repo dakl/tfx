@@ -20,13 +20,15 @@ This file is equivalent to examples/chicago_taxi/trainer/model.py and
 examples/chicago_taxi/preprocess.py.
 """
 
-from __future__ import division
-from __future__ import print_function
-
-import tensorflow as tf
+import os
+import time
+from ml_metadata.metadata_store import metadata_store
+from ml_metadata.proto import metadata_store_pb2
+import papermill as pm
+import tensorflow_data_validation as tfdv
 import tensorflow_model_analysis as tfma
-import tensorflow_transform as tft
-from tensorflow_transform.tf_metadata import schema_utils
+import utils
+
 
 # Categorical features are assumed to each have a maximum value in the dataset.
 _MAX_CATEGORICAL_FEATURE_VALUES = [24, 31, 12]
